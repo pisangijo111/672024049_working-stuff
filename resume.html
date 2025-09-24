@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume - Gracia Adonay Efendi</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+    background-color: #0a0a0a;
+}
+h1 { font-family: 'Dancing Script', cursive; }
+.fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+#custom-cursor {
+    width: 14px; height: 14px; background-color: #fde047; border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%) scale(1); transition: transform 0.15s ease-out;
+    box-shadow: 0 0 8px rgba(253,224,71,0.6);
+}
+/* Card hover */
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: scale(1.03); }
+/* Timeline */
+.timeline { position: relative; margin: 2rem 0; padding-left: 2rem; }
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #fde047, transparent);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fde047;
+    box-shadow: 0 0 6px #fde04750;
+}
+.timeline-item:hover h3 { color: #fff; transform: scale(1.02); transition: transform 0.2s; }
+h2 { text-shadow: 0 0 4px #fde047; }
+/* Skill hover effect */
+.skill-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    transition: transform 0.2s ease;
+}
+</style>
+</head>
+<body class="bg-black text-white relative">
+<div id="custom-cursor"></div>
+
+<!-- Top Bar -->
+<div class="bg-[#1f1f1f] flex items-center px-4 py-2 space-x-2 fixed w-full z-50">
+    <div class="flex space-x-2"><span class="w-3 h-3 bg-red-500 rounded-full"></span><span class="w-3 h-3 bg-yellow-400 rounded-full"></span><span class="w-3 h-3 bg-green-500 rounded-full"></span></div>
+    <div class="flex-1 flex justify-center"><div class="bg-gray-800 text-gray-400 px-4 py-1 rounded-full text-sm w-3/4 text-center">https://gracia-portfolio.com/resume</div></div>
+</div>
+
+<!-- Navigation -->
+<nav class="flex justify-between items-center py-3 px-6 md:px-12 bg-black/80 backdrop-blur-md fixed w-full z-40 mt-10 shadow-md">
+    <div class="text-2xl md:text-3xl font-bold tracking-widest text-yellow-300 leading-tight">COOL<br>Diva</div>
+    <ul class="hidden md:flex space-x-6 uppercase tracking-wide text-sm md:text-base" id="navLinks">
+        <li><a href="index.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Home</a></li>
+        <li><a href="about.html" class="text-gray-300 hover:text-yellow-300 transition-colors">About Me</a></li>
+        <li><a href="portfolio.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Portfolio</a></li>
+        <li><a href="resume.html" class="text-yellow-300 font-semibold">Resume</a></li>
+        <li><a href="contact.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Contact</a></li>
+    </ul>
+    <div class="md:hidden text-yellow-300 text-2xl cursor-pointer" id="mobileMenu">☰</div>
+</nav>
+
+<!-- Main Resume Section -->
+<section class="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-20 pt-40 space-y-12" id="resumeContent">
+    <h1 class="text-5xl sm:text-6xl font-bold text-yellow-300 fade-up">My Resume</h1>
+
+    <!-- Education Roadmap -->
+    <div class="timeline fade-up">
+        <div class="timeline-item">
+            <h3 class="text-yellow-300 text-xl font-bold mb-1">SD KRISTEN TIOUW</h3>
+            <p class="text-gray-300 text-sm">Primary Education</p>
+        </div>
+        <div class="timeline-item">
+            <h3 class="text-yellow-300 text-xl font-bold mb-1">SMP NEGERI 1 SAPARUA</h3>
+            <p class="text-gray-300 text-sm">Middle School</p>
+        </div>
+        <div class="timeline-item">
+            <h3 class="text-yellow-300 text-xl font-bold mb-1">SMA NEGERI 2 AMBON</h3>
+            <p class="text-gray-300 text-sm">High School</p>
+        </div>
+        <div class="timeline-item">
+            <h3 class="text-yellow-300 text-xl font-bold mb-1">UNIVERSITAS KRISTEN SATYA WACANA</h3>
+            <p class="text-gray-300 text-sm">Bachelor of Information Technology (Ongoing)</p>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="bg-gray-900 border border-yellow-300/40 rounded-2xl shadow-xl p-6 fade-up w-full max-w-3xl">
+        <h2 class="text-2xl font-bold text-yellow-300 mb-4 text-center">Skills</h2>
+        <div class="flex justify-center space-x-4 mb-6">
+            <button id="btnInternal" class="px-4 py-2 rounded-lg bg-yellow-300 text-black font-semibold hover:scale-105 transition">Internal</button>
+            <button id="btnExternal" class="px-4 py-2 rounded-lg bg-gray-800 text-yellow-300 font-semibold hover:scale-105 transition">External</button>
+        </div>
+        <div id="internalSkills" class="grid gap-4">
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="users" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Leadership</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="message-circle" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Communication</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="brain" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Critical Thinking</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="heart" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Teamwork & Collaboration</span></div>
+        </div>
+        <div id="externalSkills" class="grid gap-4 hidden">
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="code" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Web Development (HTML, CSS, JS)</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="layout-dashboard" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">UI/UX Design</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="database" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Basic Database Management</span></div>
+            <div class="flex items-center space-x-4 skill-item"><i data-lucide="cpu" class="text-yellow-300 w-6 h-6"></i><span class="text-gray-300 text-lg">Problem Solving & Debugging</span></div>
+        </div>
+    </div>
+
+    <!-- Achievements Section -->
+    <div class="fade-up w-full max-w-5xl">
+        <h2 class="text-3xl font-bold text-yellow-300 mb-6 text-center">Achievements</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-900 border border-yellow-300/40 rounded-2xl shadow-lg p-6 flex flex-col items-center space-y-3 transform transition duration-300 hover:scale-105 hover:shadow-yellow-300/40">
+                <i data-lucide="users" class="text-yellow-300 w-10 h-10"></i>
+                <h3 class="text-lg font-semibold text-white text-center">Leader – LOCAL AIESEC</h3>
+                <p class="text-gray-400 text-sm text-center">Led community initiatives and youth development projects.</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-300/40 rounded-2xl shadow-lg p-6 flex flex-col items-center space-y-3 transform transition duration-300 hover:scale-105 hover:shadow-yellow-300/40">
+                <i data-lucide="award" class="text-yellow-300 w-10 h-10"></i>
+                <h3 class="text-lg font-semibold text-white text-center">Google x Rakamin</h3>
+                <p class="text-gray-400 text-sm text-center">Recognized as Excellent Student in Kimia Farma and Mandiri programs.</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-300/40 rounded-2xl shadow-lg p-6 flex flex-col items-center space-y-3 transform transition duration-300 hover:scale-105 hover:shadow-yellow-300/40">
+                <i data-lucide="book-open" class="text-yellow-300 w-10 h-10"></i>
+                <h3 class="text-lg font-semibold text-white text-center">International Paper</h3>
+                <p class="text-gray-400 text-sm text-center">Co-authored an international research paper, contributing to academic work.</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-300/40 rounded-2xl shadow-lg p-6 flex flex-col items-center space-y-3 transform transition duration-300 hover:scale-105 hover:shadow-yellow-300/40">
+                <i data-lucide="star" class="text-yellow-300 w-10 h-10"></i>
+                <h3 class="text-lg font-semibold text-white text-center">Hackathon Finalist</h3>
+                <p class="text-gray-400 text-sm text-center">Reached the finals of a national-level hackathon with a team project.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="text-center py-6 border-t border-gray-800 text-gray-500 text-sm">
+    &copy; 2025 <span class="text-yellow-300">Gracia Adonay Efendi</span>. Faculty of Information.
+</footer>
+
+<script>
+lucide.createIcons();
+const navLinks = document.getElementById("navLinks");
+document.getElementById('mobileMenu').addEventListener('click', () => {
+    navLinks.classList.toggle('hidden');
+    navLinks.classList.toggle('flex');
+    navLinks.classList.toggle('flex-col');
+    navLinks.classList.toggle('items-start');
+    navLinks.classList.toggle('space-x-6');
+    navLinks.classList.toggle('space-y-4');
+    navLinks.classList.toggle('bg-black/90');
+    navLinks.classList.toggle('p-4');
+    navLinks.classList.toggle('absolute');
+    navLinks.classList.toggle('top-16');
+    navLinks.classList.toggle('right-4');
+    navLinks.classList.toggle('rounded-xl');
+    navLinks.classList.toggle('shadow-lg');
+});
+const cursor = document.getElementById("custom-cursor");
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+});
+const hoverTargets = document.querySelectorAll("a, button, .card-hover");
+hoverTargets.forEach(el => {
+    el.addEventListener("mouseenter", () => cursor.style.transform = "translate(-50%, -50%) scale(1.4)");
+    el.addEventListener("mouseleave", () => cursor.style.transform = "translate(-50%, -50%) scale(1)");
+});
+const btnInternal = document.getElementById('btnInternal');
+const btnExternal = document.getElementById('btnExternal');
+const internalSkills = document.getElementById('internalSkills');
+const externalSkills = document.getElementById('externalSkills');
+
+btnInternal.addEventListener('click', () => {
+    internalSkills.classList.remove('hidden');
+    externalSkills.classList.add('hidden');
+    btnInternal.classList.add('bg-yellow-300','text-black');
+    btnInternal.classList.remove('bg-gray-800','text-yellow-300');
+    btnExternal.classList.add('bg-gray-800','text-yellow-300');
+    btnExternal.classList.remove('bg-yellow-300','text-black');
+});
+btnExternal.addEventListener('click', () => {
+    internalSkills.classList.add('hidden');
+    externalSkills.classList.remove('hidden');
+    btnExternal.classList.add('bg-yellow-300','text-black');
+    btnExternal.classList.remove('bg-gray-800','text-yellow-300');
+    btnInternal.classList.add('bg-gray-800','text-yellow-300');
+    btnInternal.classList.remove('bg-yellow-300','text-black');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Gracia Adonay Efendi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      cursor: none;
+    }
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .browser-bar { background-color: #1f1f1f; }
+
+    #custom-cursor {
+      width: 14px;
+      height: 14px;
+      background-color: #fde047;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform 0.15s ease-out, background-color 0.2s ease;
+    }
+
+    .fact-card:hover {
+      box-shadow: 0 0 20px rgba(253,224,71,0.3);
+      transform: translateY(-4px);
+    }
+    #hobbyImage { transition: opacity 0.5s ease; }
+
+   
+    .highlight {
+      background: linear-gradient(to right, #fde047, #facc15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Top Browser Bar -->
+  <div class="browser-bar flex items-center px-4 py-2 space-x-2 fixed w-full z-50">
+    <div class="flex space-x-2">
+      <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+      <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+      <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <div class="bg-gray-800 text-gray-400 px-4 py-1 rounded-full text-sm w-3/4 text-center">
+        https://gracia-portfolio.com/about
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="custom-cursor"></div>
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center py-3 px-6 md:px-12 bg-black/80 backdrop-blur-md fixed w-full z-40 mt-10 shadow-md">
+    <div class="text-2xl md:text-3xl font-bold tracking-widest text-yellow-300">COOL<br>Diva</div>
+    <ul class="hidden md:flex space-x-6 uppercase tracking-wide text-sm md:text-base">
+      <li><a href="index.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Home</a></li>
+      <li><a href="about.html" class="text-yellow-300 font-semibold">About Me</a></li>
+      <li><a href="portfolio.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Portfolio</a></li>
+      <li><a href="resume.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Resume</a></li>
+      <li><a href="contact.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Contact</a></li>
+    </ul>
+    <div class="md:hidden text-yellow-300 text-2xl cursor-pointer" id="mobileMenu">☰</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 pt-28">
+    <div class="md:w-1/2 fade-up">
+      <h1 class="text-5xl sm:text-6xl text-yellow-300 mb-6">Hello,i am Gracia Adonay Efendi</h1>
+      <p class="text-gray-300 text-lg leading-relaxed">
+        I am <span id="age" class="highlight"></span> years old, and I am one of the students in the
+        <span class="highlight">International Class</span> of the
+        <span class="highlight">Faculty of Information</span>,
+        majoring in <span class="highlight">Engineering Informatics</span>.
+        I love making new friends. and here are some facts about me:
+      </p>
+    </div>
+    <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center fade-up">
+      <img src="foto 2.jpg" alt="My Photo" class="rounded-2xl shadow-lg w-80 md:w-[400px] hover:scale-105 transition-transform">
+    </div>
+  </section>
+
+  <!-- Hobbies Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20">
+    <h2 class="text-4xl sm:text-5xl text-yellow-300 mb-12 fade-up">My Hobbies</h2>
+    <div class="relative max-w-3xl w-full flex flex-col items-center border border-white/20 rounded-2xl shadow-xl bg-gray-900/50 backdrop-blur-md p-6">
+      <img id="hobbyImage" src="baking.jpeg" alt="Baking" class="rounded-2xl shadow-lg w-full h-80 object-cover fade-up">
+      <p id="hobbyText" class="mt-6 text-gray-300 text-lg text-center fade-up">
+        I love baking! i think it is good for killing your free time. baking also test your patience and your knowlegde in measurments and predictions
+      </p>
+      <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 p-3 rounded-full hover:bg-yellow-300 hover:text-black transition">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 p-3 rounded-full hover:bg-yellow-300 hover:text-black transition">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- Quick Facts Section -->
+  <section class="py-20 bg-gradient-to-b from-black to-gray-900 px-6 md:px-20">
+    <h2 class="text-4xl sm:text-5xl text-yellow-300 mb-12 text-center fade-up">Quick Facts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="fact-card bg-gray-900/50 border border-white/10 rounded-2xl p-6 shadow-md text-center transition">
+        <h3 class="text-xl font-bold text-yellow-300 mb-3">Fun Facts</h3>
+        <p class="text-gray-300">i once saw a hamster being torn alive by a mouse </p>
+      </div>
+      <div class="fact-card bg-gray-900/50 border border-white/10 rounded-2xl p-6 shadow-md text-center transition">
+        <h3 class="text-xl font-bold text-yellow-300 mb-3">Fun Facts</h3>
+        <p class="text-gray-300">i love watching horror movies</p>
+      </div>
+      <div class="fact-card bg-gray-900/50 border border-white/10 rounded-2xl p-6 shadow-md text-center transition">
+        <h3 class="text-xl font-bold text-yellow-300 mb-3">Fun Facts</h3>
+        <p class="text-gray-300">I can spend hours perfeticng digital arts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20">
+    <h2 class="text-4xl sm:text-5xl text-yellow-300 mb-12 fade-up">Where I Was Born</h2>
+    <div class="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg fade-up border border-white/20">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252695.9644310611!2d127.9770574!3d-3.6547036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6ce9e7b48b9f01%3A0x4a0fba8e6f5ef10!2sAmbon%2C%20Maluku!5e0!3m2!1sen!2sid!4v1700000000000"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <div class="absolute bottom-4 left-4 bg-black/70 text-yellow-300 px-4 py-2 rounded-xl text-lg shadow-md">
+        📍 I was born here!
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 text-center">
+    <h2 class="text-4xl text-yellow-300 mb-6">Want to Know More?</h2>
+    <a href="contact.html" class="bg-yellow-300 text-black px-8 py-4 rounded-xl text-lg font-semibold hover:bg-yellow-400 transition">Let’s Connect</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-gray-800 text-gray-500 text-sm md:text-base">
+    &copy; 2025 <span class="text-yellow-300">Gracia Adonay Efendi</span>. Faculty of Information.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    document.getElementById('mobileMenu').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('hidden');
+    });
+
+  
+    const birthDate = new Date('2007-01-10');
+    const ageSpan = document.getElementById('age');
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+    ageSpan.textContent = age;
+
+    
+    const hobbies = [
+      { img: "baking.jpeg", text: "I love baking delicious pastries and cakes in my free time." },
+      { img: "digital.jpg", text: "I enjoy creating digital art and exploring new design styles." },
+      { img: "shopping.jpg", text: "i enjoy shopping in big malls." }
+    ];
+    let index = 0;
+    const hobbyImage = document.getElementById("hobbyImage");
+    const hobbyText = document.getElementById("hobbyText");
+    function updateHobby() {
+      hobbyImage.style.opacity = 0;
+      setTimeout(() => {
+        hobbyImage.src = hobbies[index].img;
+        hobbyText.textContent = hobbies[index].text;
+        hobbyImage.style.opacity = 1;
+      }, 300);
+    }
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      index = (index + 1) % hobbies.length;
+      updateHobby();
+    });
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      index = (index - 1 + hobbies.length) % hobbies.length;
+      updateHobby();
+    });
+
+    
+    const cursor = document.getElementById("custom-cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+    document.querySelectorAll("a, button, .fact-card").forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        cursor.style.transform = "translate(-50%, -50%) scale(1.6)";
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+      });
+    });
+
+  
+    const fadeEls = document.querySelectorAll(".fade-up");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.animationPlayState = "running";
+      });
+    }, { threshold: 0.2 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Gracia Adonay Efendi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+            background-color: #000;
+            background-image: radial-gradient(circle at 10% 20%, rgba(253, 224, 71, 0.1) 0%, rgba(253, 224, 71, 0) 25%), 
+                              radial-gradient(circle at 80% 90%, rgba(253, 224, 71, 0.1) 0%, rgba(253, 224, 71, 0) 25%);
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+        #custom-cursor {
+            width: 14px; height: 14px; background-color: #fde047; border-radius: 50%;
+            position: fixed; top: 0; left: 0; pointer-events: none; z-index: 10000;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.15s ease-out;
+            box-shadow: 0 0 12px rgba(253, 224, 71, 0.8);
+        }
+        #mouse-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(253, 224, 71, 0.08) 0%, rgba(253, 224, 71, 0) 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+        }
+        .card-hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease-out;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        .card-hover:hover {
+            box-shadow: 0 10px 40px rgba(253, 224, 71, 0.15);
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        
+        #projectModal { transition: opacity 0.3s ease-in-out; }
+        #projectModal #modalContent { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        #projectModal.active { opacity: 1; pointer-events: auto; }
+        #projectModal.active #modalContent { transform: scale(1); opacity: 1; }
+    </style>
+</head>
+<body class="bg-black text-white relative">
+    <div id="custom-cursor"></div>
+    <div id="mouse-glow"></div>
+
+    <div class="bg-[#1f1f1f] flex items-center px-4 py-2 space-x-2 fixed w-full z-50">
+        <div class="flex space-x-2">
+            <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+            <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+        </div>
+        <div class="flex-1 flex justify-center">
+            <div class="bg-gray-800 text-gray-400 px-4 py-1 rounded-full text-sm w-full max-w-md text-center truncate">https://gracia-portfolio.com/portfolio</div>
+        </div>
+    </div>
+
+    <nav class="flex justify-between items-center py-3 px-6 md:px-12 bg-black/80 backdrop-blur-md fixed w-full z-40 mt-10 shadow-lg">
+        <div class="text-2xl md:text-3xl font-bold tracking-widest text-yellow-300 leading-tight">COOL<br>Diva</div>
+        <ul class="hidden md:flex space-x-6 uppercase tracking-wide text-sm md:text-base" id="navLinks">
+            <li><a href="index.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-yellow-300 transition-colors">About Me</a></li>
+            <li><a href="portfolio.html" class="text-yellow-300 font-semibold">Portfolio</a></li>
+            <li><a href="resume.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Resume</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Contact</a></li>
+        </ul>
+        <div class="md:hidden text-yellow-300 text-2xl cursor-pointer" id="mobileMenu"><i data-lucide="menu"></i></div>
+    </nav>
+
+    <main class="pt-40 pb-20 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto">
+            <header class="text-center mb-16">
+                <h1 class="text-5xl sm:text-7xl font-bold text-yellow-300 fade-up">My Projects</h1>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto fade-up delay-100">A showcase of my work in data analytics, design, and development. Click any card to see the details.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="projectGrid">
+
+               <!-- Spotlight Project Card -->
+<div class="lg:col-span-2 rounded-2xl flex flex-col card-hover fade-up delay-200 project-card"
+     data-title="Data Analytics | Rakamin x Google"
+     data-desc="Completed an intensive data analytics bootcamp in collaboration with Rakamin Academy and Google. This project involved processing large datasets, performing exploratory data analysis using SQL and Python, and building insightful dashboards in Looker Studio to track business KPIs and user behavior."
+     data-tags='["Google Analytics", "SQL", "Python", "Looker Studio", "Data Visualization"]'
+     data-live-link="#" data-code-link="#">
+
+    <img src="kimia.jpg" alt="Rakamin Google Data Analytics" class="rounded-t-2xl w-full h-auto">
+
+    <div class="p-8 flex flex-col flex-grow">
+        <h2 class="text-3xl font-bold text-yellow-300 mb-2">Rakamin Google Data Analytics</h2>
+        <p class="text-gray-400 flex-grow max-w-lg">An intensive data analytics project focused on processing, analyzing, and visualizing business intelligence data to drive strategic decisions.</p>
+    </div>
+</div>
+
+<!-- Figma Design Card -->
+<div class="rounded-2xl flex flex-col card-hover fade-up delay-300 project-card"
+     data-title="UI/UX Design for Mobile App"
+     data-desc="Designed a high-fidelity prototype for a new mobile application using Figma. The process involved user research, creating user flows, wireframing, and developing a complete design system with reusable components to ensure a consistent and intuitive user experience."
+     data-tags='["Figma", "UI/UX Design", "Prototyping", "User Research"]'
+     data-live-link="#" data-code-link="#">
+
+    <img src="figma.jpg" alt="Figma UI/UX Design" class="rounded-t-2xl w-full h-auto">
+
+    <div class="p-8 flex flex-col flex-grow">
+        <h2 class="text-2xl font-bold text-yellow-300 mb-2">Figma UI/UX Design</h2>
+        <p class="text-gray-400 flex-grow">High-fidelity mobile app prototype.</p>
+    </div>
+</div>
+
+<!-- AIESEC Card -->
+<div class="rounded-2xl flex flex-col card-hover fade-up delay-200 project-card"
+     data-title="AIESEC | Digital Marketing & Team Lead"
+     data-desc="As a team leader in AIESEC, I managed digital marketing campaigns to promote international exchange programs. My responsibilities included social media strategy, content creation, and analyzing campaign performance to increase student engagement and applications."
+     data-tags='["Digital Marketing", "Leadership", "Social Media", "Campaign Analysis"]'
+     data-live-link="#" data-code-link="#">
+
+    <img src="aiesec.jpg" alt="AIESEC" class="rounded-t-2xl w-full h-auto">
+
+    <div class="p-8 flex flex-col flex-grow">
+        <h2 class="text-2xl font-bold text-yellow-300 mb-2">AIESEC</h2>
+        <p class="text-gray-400 flex-grow">Led digital marketing campaigns.</p>
+    </div>
+</div>
+
+<!-- Visual Novel Card -->
+<div class="rounded-2xl flex flex-col card-hover fade-up delay-300 project-card"
+     data-title="Visual Novel Game Development"
+     data-desc="Contributed to the development of an indie visual novel game. My role focused on designing the user interface, creating character assets, and implementing narrative branching logic using Ren'Py. This project combined my skills in creative design and technical scripting."
+     data-tags='["Game Design", "Ren''Py", "UI Design", "Narrative Design", "Creative Suite"]'
+     data-live-link="#" data-code-link="#">
+
+    <img src="vc.png" alt="Visual Novel Game" class="rounded-t-2xl w-full h-auto">
+
+    <div class="p-8 flex flex-col flex-grow">
+        <h2 class="text-2xl font-bold text-yellow-300 mb-2">Visual Novel Game</h2>
+        <p class="text-gray-400 flex-grow">UI and narrative design for an indie game.</p>
+    </div>
+</div>
+
+<!-- EASE International Card (UPDATED) -->
+<div class="rounded-2xl flex flex-col card-hover fade-up delay-400 project-card"
+     data-title="EASE International | Program Management"
+     data-desc="Managed and coordinated international student exchange programs for EASE International. My role involved leading a team, overseeing project timelines, facilitating cross-cultural communication between participants, and ensuring program objectives were met successfully."
+     data-tags='["Leadership", "Program Management", "International Relations", "Cross-Cultural Communication"]'
+     data-live-link="#" data-code-link="#">
+
+    <img src="ease.jpeg" alt="EASE International" class="rounded-t-2xl w-full h-auto">
+
+    <div class="p-8 flex flex-col flex-grow">
+        <h2 class="text-2xl font-bold text-yellow-300 mb-2">EASE International</h2>
+        <p class="text-gray-400 flex-grow">Program management and team leadership.</p>
+    </div>
+</div>
+
+    <footer class="text-center py-8 border-t border-gray-900 mt-16 text-gray-500 text-sm">
+        &copy; 2025 <span class="text-yellow-300">Gracia Adonay Efendi</span>. All Rights Reserved.
+    </footer>
+
+    <!-- Project Spotlight Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+        <div id="modalContent" class="bg-gray-900/80 border border-white/10 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto flex flex-col transform scale-95 opacity-0">
+            <div class="p-4 flex justify-between items-center border-b border-white/10 sticky top-0 bg-gray-900/80 backdrop-blur-sm z-10">
+                <h2 id="modalTitle" class="text-xl md:text-2xl font-bold text-yellow-300"></h2>
+                <button id="closeModal" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="x" class="w-8 h-8"></i></button>
+            </div>
+            <div class="p-6 md:p-8">
+                <img id="modalImage" src="" alt="Project Screenshot" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                <p id="modalDescription" class="text-gray-300 mb-6 text-base leading-relaxed"></p>
+                <div id="modalTags" class="flex flex-wrap gap-2 mb-6"></div>
+                <div id="modalLinks" class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+   
+        const navLinks = document.getElementById("navLinks");
+        document.getElementById('mobileMenu').addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('items-start');
+            navLinks.classList.toggle('space-x-6');
+            navLinks.classList.toggle('space-y-4');
+            navLinks.classList.toggle('bg-black/90');
+            navLinks.classList.toggle('p-6');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-16');
+            navLinks.classList.toggle('right-4');
+            navLinks.classList.toggle('rounded-xl');
+            navLinks.classList.toggle('shadow-lg');
+        });
+
+       
+        const cursor = document.getElementById("custom-cursor");
+        const glow = document.getElementById("mouse-glow");
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        });
+        
+        const hoverTargets = document.querySelectorAll("a, button, .project-card");
+        hoverTargets.forEach(el => {
+            el.addEventListener("mouseenter", () => cursor.style.transform = "translate(-50%, -50%) scale(1.6)");
+            el.addEventListener("mouseleave", () => cursor.style.transform = "translate(-50%, -50%) scale(1)");
+        });
+
+       
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -y / 20;
+                const rotateY = x / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+      
+        const projectGrid = document.getElementById('projectGrid');
+        const modal = document.getElementById('projectModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalTags = document.getElementById('modalTags');
+        const modalLinks = document.getElementById('modalLinks');
+
+        
+        projectGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card'); 
+            if (!card) return; 
+
+           
+            modalTitle.textContent = card.dataset.title;
+            modalImage.src = card.dataset.img;
+            modalImage.alt = card.dataset.title + " Screenshot";
+            modalDescription.textContent = card.dataset.desc;
+            
+            modalTags.innerHTML = '';
+            try {
+                
+                const tagsString = card.dataset.tags.replace(/'/g, '"');
+                const tags = JSON.parse(tagsString);
+                tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = "bg-yellow-300/10 text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full";
+                    tagEl.textContent = tag;
+                    modalTags.appendChild(tagEl);
+                });
+            } catch (error) {
+                console.error("Could not parse tags JSON:", error, card.dataset.tags);
+            }
+
+
+            modalLinks.innerHTML = '';
+            const liveLink = card.dataset.liveLink;
+            const codeLink = card.dataset.codeLink;
+            
+            if (liveLink && liveLink !== '#') {
+                const liveLinkEl = document.createElement('a');
+                liveLinkEl.href = liveLink;
+                liveLinkEl.target = '_blank';
+                liveLinkEl.className = "bg-yellow-300 text-black font-bold py-2 px-4 rounded-full flex items-center justify-center w-full hover:bg-yellow-400 transition-all";
+                liveLinkEl.innerHTML = `<i data-lucide="external-link" class="w-4 h-4 mr-2"></i>Live Demo`;
+                modalLinks.appendChild(liveLinkEl);
+            }
+            
+            if (codeLink && codeLink !== '#') {
+                const codeLinkEl = document.createElement('a');
+                codeLinkEl.href = codeLink;
+                codeLinkEl.target = '_blank';
+                codeLinkEl.className = "bg-gray-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center w-full hover:bg-gray-600 transition-all";
+                codeLinkEl.innerHTML = `<i data-lucide="github" class="w-4 h-4 mr-2"></i>View Code`;
+                modalLinks.appendChild(codeLinkEl);
+            }
+            
+            lucide.createIcons();
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+

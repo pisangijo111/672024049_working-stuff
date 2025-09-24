@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Gracia Adonay Efendi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; }
+    h1 { font-family: 'Dancing Script', cursive; }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+
+    .card-hover:hover { box-shadow: 0 0 20px rgba(253, 224, 71, 0.3); transform: scale(1.03); }
+
+    #custom-cursor {
+      width: 14px; height: 14px;
+      background-color: #fde047; border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.15s ease-out;
+      box-shadow: 0 0 12px rgba(253,224,71,0.8);
+    }
+
+    .contact-text {
+      word-break: break-word;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body class="bg-black text-white relative">
+
+  <div id="custom-cursor"></div>
+
+  <!-- Browser Bar -->
+  <div class="bg-[#1f1f1f] flex items-center px-4 py-2 space-x-2 fixed w-full z-50">
+    <div class="flex space-x-2">
+      <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+      <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+      <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <div class="bg-gray-800 text-gray-400 px-4 py-1 rounded-full text-sm w-3/4 text-center">
+        https://gracia-portfolio.com/contact
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="flex justify-between items-center py-3 px-6 md:px-12 bg-black/80 backdrop-blur-md fixed w-full z-40 mt-10 shadow-md">
+    <div class="text-2xl md:text-3xl font-bold tracking-widest text-yellow-300 leading-tight">COOL<br>Diva</div>
+    <ul class="hidden md:flex space-x-6 uppercase tracking-wide text-sm md:text-base" id="navLinks">
+      <li><a href="index.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Home</a></li>
+      <li><a href="about.html" class="text-gray-300 hover:text-yellow-300 transition-colors">About Me</a></li>
+      <li><a href="portfolio.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Portfolio</a></li>
+      <li><a href="resume.html" class="text-gray-300 hover:text-yellow-300 transition-colors">Resume</a></li>
+      <li><a href="contact.html" class="text-yellow-300 font-semibold">Contact</a></li>
+    </ul>
+    <div class="md:hidden text-yellow-300 text-2xl cursor-pointer" id="mobileMenu">☰</div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-20 pt-40">
+    <h1 class="text-5xl sm:text-6xl font-bold text-yellow-300 mb-12 fade-up">Let’s Get in Touch</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">
+      
+      <!-- Email -->
+      <a href="mailto:672024049@student.uksw.edu"
+         class="group bg-gray-900 hover:bg-yellow-300 hover:text-black rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 fade-up card-hover">
+        <i data-lucide="mail" class="w-10 h-10 text-yellow-300 group-hover:text-black mb-3"></i>
+        <h3 class="text-lg font-bold mb-1">Email</h3>
+        <p class="contact-text text-gray-400 group-hover:text-black">672024049@student.uksw.edu</p>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/i_do_love_ice_creams?igsh=cHZ2ZW1jcmtwd2Y=" target="_blank"
+         class="group bg-gray-900 hover:bg-yellow-300 hover:text-black rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 fade-up card-hover">
+        <i data-lucide="instagram" class="w-10 h-10 text-yellow-300 group-hover:text-black mb-3"></i>
+        <h3 class="text-lg font-bold mb-1">Instagram</h3>
+        <p class="contact-text text-gray-400 group-hover:text-black">@i_do_love_ice_creams</p>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/qr/WCQQ4SWGMQ35G1" target="_blank"
+         class="group bg-gray-900 hover:bg-yellow-300 hover:text-black rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 fade-up card-hover">
+        <i data-lucide="message-circle" class="w-10 h-10 text-yellow-300 group-hover:text-black mb-3"></i>
+        <h3 class="text-lg font-bold mb-1">WhatsApp</h3>
+        <p class="contact-text text-gray-400 group-hover:text-black">+62 822-3834-0647</p>
+      </a>
+
+      <!-- Call -->
+      <a href="tel:+6282238340647"
+         class="group bg-gray-900 hover:bg-yellow-300 hover:text-black rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 fade-up card-hover">
+        <i data-lucide="phone" class="w-10 h-10 text-yellow-300 group-hover:text-black mb-3"></i>
+        <h3 class="text-lg font-bold mb-1">Call</h3>
+        <p class="contact-text text-gray-400 group-hover:text-black">+62 822-3834-0647</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="text-center py-6 border-t border-gray-800 text-gray-500 text-sm">
+    &copy; 2025 <span class="text-yellow-300">Gracia Adonay Efendi</span>. Faculty of Information.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const navLinks = document.getElementById("navLinks");
+    document.getElementById('mobileMenu').addEventListener('click', () => {
+      navLinks.classList.toggle('hidden');
+      navLinks.classList.toggle('flex');
+      navLinks.classList.toggle('flex-col');
+      navLinks.classList.toggle('items-start');
+      navLinks.classList.toggle('space-x-6'); 
+      navLinks.classList.toggle('space-y-4'); 
+      navLinks.classList.toggle('bg-black/90');
+      navLinks.classList.toggle('p-4');
+      navLinks.classList.toggle('absolute');
+      navLinks.classList.toggle('top-16');
+      navLinks.classList.toggle('right-4');
+      navLinks.classList.toggle('rounded-xl');
+      navLinks.classList.toggle('shadow-lg');
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById("custom-cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+
+    const hoverTargets = document.querySelectorAll("a, button, .card-hover");
+    hoverTargets.forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.style.transform = "translate(-50%, -50%) scale(1.6)");
+      el.addEventListener("mouseleave", () => cursor.style.transform = "translate(-50%, -50%) scale(1)");
+    });
+  </script>
+</body>
+</html>
